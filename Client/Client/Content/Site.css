@@ -17,10 +17,13 @@ textarea {
 }
 
 .content-block {
-    float: left;
-    width: 800px;
 }
 
 .news-block {
 
+}
+
+.login-block {
+    width: 200px;
+    float: right;
 }
