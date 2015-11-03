@@ -1,3 +1,5 @@
 Client/bin/
-
 Client/obj/
+/Client/Client/bin
+*.suo
+/Client/Client/obj/Debug
