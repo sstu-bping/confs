@@ -30,6 +30,18 @@ namespace Client.DAL
 
             confs.ForEach(c => context.Conferences.Add(c));
             context.SaveChanges();
+
+            // Users
+            var user = new RegistrationModel { 
+                Id = Guid.NewGuid().ToString(),
+                Login = "Anakonda",
+                Password = "Anakonda_2",
+                Email = "anakonda@mail.ru",
+                VUZ = "SGTU",
+                Position = "studend"
+            };
+            context.Users.Add(user);
+            context.SaveChanges();
         }
     }
 }

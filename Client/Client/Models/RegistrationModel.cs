@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Data.Entity.Spatial;
+using System.ComponentModel.DataAnnotations.Schema;
+
 
 namespace Client.Models
 {
+    [Table("Users")]
     public class RegistrationModel
     {
+        [Key]
         public string Id { get; set; }
 
         [Display(Name = "Логин*")]
@@ -18,7 +23,7 @@ namespace Client.Models
 
         [Display(Name = "Пароль*")]
         [DataType(DataType.Password)]
-        [Required]
+        //[Required]
         [StringLength(50, MinimumLength = 5,
             ErrorMessage = "Длина пароля должна быть в диапазоне от {2} до {1} символов!")]
         [RegularExpression(@"(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*",
@@ -29,7 +34,7 @@ namespace Client.Models
             ErrorMessage = "Некорректное имя!")]
         [StringLength(30, MinimumLength = 1,
             ErrorMessage = "Длина имени должна быть в диапазоне от {2} до {1} символов!")]
-        [Required(ErrorMessage = "Имя не может быть пустым!")]
+        //[Required(ErrorMessage = "Имя не может быть пустым!")]
         [Display(Name = "Имя*")]
         public string Name { get; set; }
 
@@ -43,18 +48,18 @@ namespace Client.Models
         [Display(Name = "Email*")]
         [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")]
         [DataType(DataType.EmailAddress)]
-        public int Email { get; set; }
+        public string Email { get; set; }
 
         [Display(Name = "ВУЗ*")]
         [StringLength(15, MinimumLength = 3,
             ErrorMessage = "Длина ВУЗа должна быть в диапазоне от {2} до {1} символов!")]
-        [Required(ErrorMessage = "ВУЗ не может быть пустым!")]
+        //[Required(ErrorMessage = "ВУЗ не может быть пустым!")]
         public string VUZ { get; set; }
 
         [Display(Name = "Должность*")]
         [StringLength(20, MinimumLength = 3,
             ErrorMessage = "Длина должности должна быть в диапазоне от {2} до {1} символов!")]
-        [Required(ErrorMessage = "Должность не может быть пустой!")]
+        //[Required(ErrorMessage = "Должность не может быть пустой!")]
         public string Position { get; set; }
 
 

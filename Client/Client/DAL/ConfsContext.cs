@@ -15,6 +15,7 @@ namespace Client.DAL
 
         public DbSet<News> News { get; set; }
         public DbSet<Conference> Conferences { get; set; }
+        public DbSet<RegistrationModel> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
