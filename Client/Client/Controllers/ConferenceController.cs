@@ -6,112 +6,112 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Client.DAL;
 using Client.Models;
+using Client.DAL;
 
 namespace Client.Controllers
 {
-    public class ConferencesController : Controller
+    public class ConferenceController : Controller
     {
         private ConfsContext db = new ConfsContext();
 
-        // GET: Conferences
+        // GET: /Conference/
         public ActionResult Index()
         {
             return View(db.Conferences.ToList());
         }
 
-        // GET: Conferences/Details/5
+        // GET: /Conference/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ConferenceModel conference = db.Conferences.Find(id);
-            if (conference == null)
+            ConferenceModel conferencemodel = db.Conferences.Find(id);
+            if (conferencemodel == null)
             {
                 return HttpNotFound();
             }
-            return View(conference);
+            return View(conferencemodel);
         }
 
-        // GET: Conferences/Create
+        // GET: /Conference/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Conferences/Create
+        // POST: /Conference/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate")] ConferenceModel conference)
+        public ActionResult Create([Bind(Include="Id,Name,Description,StartDate")] ConferenceModel conferencemodel)
         {
             if (ModelState.IsValid)
             {
-                db.Conferences.Add(conference);
+                db.Conferences.Add(conferencemodel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(conference);
+            return View(conferencemodel);
         }
 
-        // GET: Conferences/Edit/5
+        // GET: /Conference/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ConferenceModel conference = db.Conferences.Find(id);
-            if (conference == null)
+            ConferenceModel conferencemodel = db.Conferences.Find(id);
+            if (conferencemodel == null)
             {
                 return HttpNotFound();
             }
-            return View(conference);
+            return View(conferencemodel);
         }
 
-        // POST: Conferences/Edit/5
+        // POST: /Conference/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,StartDate")] ConferenceModel conference)
+        public ActionResult Edit([Bind(Include="Id,Name,Description,StartDate")] ConferenceModel conferencemodel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(conference).State = EntityState.Modified;
+                db.Entry(conferencemodel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(conference);
+            return View(conferencemodel);
         }
 
-        // GET: Conferences/Delete/5
+        // GET: /Conference/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ConferenceModel conference = db.Conferences.Find(id);
-            if (conference == null)
+            ConferenceModel conferencemodel = db.Conferences.Find(id);
+            if (conferencemodel == null)
             {
                 return HttpNotFound();
             }
-            return View(conference);
+            return View(conferencemodel);
         }
 
-        // POST: Conferences/Delete/5
+        // POST: /Conference/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ConferenceModel conference = db.Conferences.Find(id);
-            db.Conferences.Remove(conference);
+            ConferenceModel conferencemodel = db.Conferences.Find(id);
+            db.Conferences.Remove(conferencemodel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

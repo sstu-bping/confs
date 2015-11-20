@@ -6,8 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Client.DAL;
 using Client.Models;
+using Client.DAL;
 
 namespace Client.Controllers
 {
@@ -15,103 +15,103 @@ namespace Client.Controllers
     {
         private ConfsContext db = new ConfsContext();
 
-        // GET: News
+        // GET: /News/
         public ActionResult Index()
         {
             return View(db.News.ToList());
         }
 
-        // GET: News/Details/5
+        // GET: /News/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NewsModel news = db.News.Find(id);
-            if (news == null)
+            NewsModel newsmodel = db.News.Find(id);
+            if (newsmodel == null)
             {
                 return HttpNotFound();
             }
-            return View(news);
+            return View(newsmodel);
         }
 
-        // GET: News/Create
+        // GET: /News/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: News/Create
+        // POST: /News/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Text,Date")] NewsModel news)
+        public ActionResult Create([Bind(Include="Id,Title,Text,Date")] NewsModel newsmodel)
         {
             if (ModelState.IsValid)
             {
-                db.News.Add(news);
+                db.News.Add(newsmodel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(news);
+            return View(newsmodel);
         }
 
-        // GET: News/Edit/5
+        // GET: /News/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NewsModel news = db.News.Find(id);
-            if (news == null)
+            NewsModel newsmodel = db.News.Find(id);
+            if (newsmodel == null)
             {
                 return HttpNotFound();
             }
-            return View(news);
+            return View(newsmodel);
         }
 
-        // POST: News/Edit/5
+        // POST: /News/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Text,Date")] NewsModel news)
+        public ActionResult Edit([Bind(Include="Id,Title,Text,Date")] NewsModel newsmodel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(news).State = EntityState.Modified;
+                db.Entry(newsmodel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(news);
+            return View(newsmodel);
         }
 
-        // GET: News/Delete/5
+        // GET: /News/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NewsModel news = db.News.Find(id);
-            if (news == null)
+            NewsModel newsmodel = db.News.Find(id);
+            if (newsmodel == null)
             {
                 return HttpNotFound();
             }
-            return View(news);
+            return View(newsmodel);
         }
 
-        // POST: News/Delete/5
+        // POST: /News/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            NewsModel news = db.News.Find(id);
-            db.News.Remove(news);
+            NewsModel newsmodel = db.News.Find(id);
+            db.News.Remove(newsmodel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
