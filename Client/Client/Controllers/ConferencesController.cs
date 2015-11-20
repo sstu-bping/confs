@@ -28,7 +28,7 @@ namespace Client.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Conference conference = db.Conferences.Find(id);
+            ConferenceModel conference = db.Conferences.Find(id);
             if (conference == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace Client.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate")] Conference conference)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,StartDate")] ConferenceModel conference)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace Client.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Conference conference = db.Conferences.Find(id);
+            ConferenceModel conference = db.Conferences.Find(id);
             if (conference == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace Client.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,StartDate")] Conference conference)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,StartDate")] ConferenceModel conference)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace Client.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Conference conference = db.Conferences.Find(id);
+            ConferenceModel conference = db.Conferences.Find(id);
             if (conference == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Conference conference = db.Conferences.Find(id);
+            ConferenceModel conference = db.Conferences.Find(id);
             db.Conferences.Remove(conference);
             db.SaveChanges();
             return RedirectToAction("Index");

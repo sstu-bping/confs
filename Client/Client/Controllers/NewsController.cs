@@ -28,7 +28,7 @@ namespace Client.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            News news = db.News.Find(id);
+            NewsModel news = db.News.Find(id);
             if (news == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace Client.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Text,Date")] News news)
+        public ActionResult Create([Bind(Include = "Id,Title,Text,Date")] NewsModel news)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace Client.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            News news = db.News.Find(id);
+            NewsModel news = db.News.Find(id);
             if (news == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace Client.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Text,Date")] News news)
+        public ActionResult Edit([Bind(Include = "Id,Title,Text,Date")] NewsModel news)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace Client.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            News news = db.News.Find(id);
+            NewsModel news = db.News.Find(id);
             if (news == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace Client.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            News news = db.News.Find(id);
+            NewsModel news = db.News.Find(id);
             db.News.Remove(news);
             db.SaveChanges();
             return RedirectToAction("Index");
