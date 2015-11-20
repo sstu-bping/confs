@@ -8,7 +8,7 @@ using System.Web;
 namespace Client.Models
 {
     [Table("News")]
-    public class News
+    public class NewsModel
     {
         [Key]
         public int Id { get; set; }
