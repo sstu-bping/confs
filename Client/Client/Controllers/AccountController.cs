@@ -6,12 +6,14 @@ using System.Web.Mvc;
 using System.Web.Security;
 using Client.Models;
 using Client.DAL;
+using AutoMapper;
+using Client.Entities;
 
 namespace Client.Controllers
 {
     public class AccountController : Controller
     {
-        private ConfsContext db = new ConfsContext();
+        private ConfsContext db = ConfsContext.Create();
 
         public ActionResult Registration()
         {
@@ -25,7 +27,8 @@ namespace Client.Controllers
             if (ModelState.IsValid)
             {
                 model.Id = Guid.NewGuid().ToString();
-                db.Users.Add(model);
+                db.Users.Add(Mapper.Map<RegistrationModel, User>(model));
+                //db.Users.Add(model);
                 db.SaveChanges();
             }
             return RedirectToAction("Index", "Home");
@@ -34,6 +37,33 @@ namespace Client.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginModel model)
+        {
+            if (db.Users.Any(o => o.Login == model.Login && o.Password == model.Password))
+            {
+                FormsAuthentication.RedirectFromLoginPage(model.Login, true);
+                var user = User.Identity.Name;
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult _AccountPanel()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return PartialView(model: User.Identity.Name);
+            }
+            return PartialView(null);
         }
     }
 }

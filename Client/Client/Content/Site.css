@@ -24,6 +24,22 @@ textarea {
 }
 
 .login-block {
-    width: 200px;
     float: right;
+}
+
+.login-block {
+    margin-top: 8px;
+    font-size: 22px;
+}
+
+.login-block span {
+    display: inline-block;
+    color: #1a4f98;
+    margin: 0;
+    margin-right: 20px;
+}
+
+.login-block .logout {
+    display: inline-block;
+    margin-left: 30px;
 }

@@ -1,4 +1,5 @@
-﻿using Client.Models;
+﻿using Client.Entities;
+using Client.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,7 +16,7 @@ namespace Client.DAL
 
         public DbSet<NewsModel> News { get; set; }
         public DbSet<ConferenceModel> Conferences { get; set; }
-        public DbSet<RegistrationModel> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -23,5 +24,10 @@ namespace Client.DAL
         }
 
 
+
+        internal static ConfsContext Create()
+        {
+            return new ConfsContext();
+        }
     }
 }

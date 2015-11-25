@@ -1,4 +1,6 @@
-﻿using Client.Models;
+﻿using AutoMapper;
+using Client.Entities;
+using Client.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +42,7 @@ namespace Client.DAL
                 VUZ = "SGTU",
                 Position = "studend"
             };
-            context.Users.Add(user);
+            context.Users.Add(Mapper.Map<RegistrationModel, User>(user));
             context.SaveChanges();
         }
     }
