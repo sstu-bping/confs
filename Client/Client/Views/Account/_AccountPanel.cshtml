@@ -1,0 +1,16 @@
+﻿@model String
+
+<div class="login-block">
+    @if (@Model != null)
+    {
+
+        <span>
+            @Model
+        </span>
+        @Html.ActionLink("Выход", "Logout", "Account", new { @class = "btn btn-primary" })
+    }
+    else
+    {
+        @Html.ActionLink("Вход", "Login", "Account", new { @class = "btn btn-primary" })
+    }
+</div>
