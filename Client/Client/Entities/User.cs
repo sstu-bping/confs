@@ -29,5 +29,7 @@ namespace Client.Entities
 
         public string Position { get; set; }
 
+        public string Role { get; set; }
+
     }
 }

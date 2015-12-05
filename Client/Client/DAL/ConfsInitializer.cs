@@ -34,16 +34,42 @@ namespace Client.DAL
             context.SaveChanges();
 
             // Users
-            var user = new RegistrationModel { 
+            var user = new User { 
                 Id = Guid.NewGuid().ToString(),
-                Login = "Anakonda",
-                Password = "Anakonda_2",
-                Email = "anakonda@mail.ru",
+                Login = "user",
+                Password = "user",
+                Email = "user@mail.ru",
                 VUZ = "SGTU",
-                Position = "studend"
+                Position = "studend",
+                Role = "user"
             };
-            context.Users.Add(Mapper.Map<RegistrationModel, User>(user));
+
+            var organizer = new User {
+                Id = Guid.NewGuid().ToString(),
+                Login = "organizer",
+                Password = "organizer",
+                Email = "organizer@mail.ru",
+                VUZ = "SGTU",
+                Position = "organizer",
+                Role = "organizer"
+            };
+
+            var admin = new User
+            {
+                Id = Guid.NewGuid().ToString(),
+                Login = "admin",
+                Password = "admin",
+                Email = "admin@mail.ru",
+                VUZ = "SGTU",
+                Position = "admin",
+                Role = "admin"
+            };
+
+            context.Users.Add(user);
+            context.Users.Add(organizer);
+            context.Users.Add(admin);
             context.SaveChanges();
+
         }
     }
 }

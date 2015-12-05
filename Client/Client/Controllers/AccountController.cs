@@ -28,7 +28,6 @@ namespace Client.Controllers
             {
                 model.Id = Guid.NewGuid().ToString();
                 db.Users.Add(Mapper.Map<RegistrationModel, User>(model));
-                //db.Users.Add(model);
                 db.SaveChanges();
             }
             return RedirectToAction("Index", "Home");

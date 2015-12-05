@@ -46,9 +46,10 @@ namespace Client.Models
         //[DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Display(Name = "ВУЗ")]
         public string VUZ { get; set; }
 
-        
+        [Display(Name = "Должность")]
         public string Position { get; set; }
 
     }
