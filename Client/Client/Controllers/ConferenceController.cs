@@ -51,6 +51,7 @@ namespace Client.Controllers
         {
             if (ModelState.IsValid)
             {
+                //conferencemodel.
                 db.Conferences.Add(conferencemodel);
                 db.SaveChanges();
                 return RedirectToAction("Index");

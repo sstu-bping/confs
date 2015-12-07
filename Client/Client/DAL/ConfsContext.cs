@@ -17,13 +17,12 @@ namespace Client.DAL
         public DbSet<NewsModel> News { get; set; }
         public DbSet<ConferenceModel> Conferences { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<ParicipationModel> Paricipations { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-
-
 
         internal static ConfsContext Create()
         {

@@ -133,6 +133,7 @@
     <Compile Include="Models\ConferenceModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\NewsModel.cs" />
+    <Compile Include="Models\ParicipationModel.cs" />
     <Compile Include="Models\RegistrationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

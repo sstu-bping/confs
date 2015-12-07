@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Client.DAL
 {
-    public class ConfsInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<ConfsContext>
+    public class ConfsInitializer : System.Data.Entity.DropCreateDatabaseAlways<ConfsContext>
     {
         protected override void Seed(ConfsContext context)
         {
@@ -54,6 +54,7 @@ namespace Client.DAL
                 Role = "organizer"
             };
 
+
             var admin = new User
             {
                 Id = Guid.NewGuid().ToString(),
@@ -64,10 +65,23 @@ namespace Client.DAL
                 Position = "admin",
                 Role = "admin"
             };
-
             context.Users.Add(user);
             context.Users.Add(organizer);
             context.Users.Add(admin);
+            context.SaveChanges();
+
+            var pconf = context.Conferences.FirstOrDefault();
+            var puser = context.Users.FirstOrDefault();
+
+            var part = new ParicipationModel
+            {
+                Title = "123",
+                Anotation = "123",
+                User = puser,
+                Conference = pconf
+            };
+            
+            context.Paricipations.Add(part);
             context.SaveChanges();
 
         }
