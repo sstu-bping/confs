@@ -24,17 +24,9 @@ namespace Client.DAL
             news.ForEach(s => context.News.Add(s));
             context.SaveChanges();
 
-            var confs = new List<ConferenceModel>
-            {
-                new ConferenceModel{Name="Умник-2015",Description="Описание конференции Умник-2015",StartDate=DateTime.Parse("2015-12-15")},
-                new ConferenceModel{Name="Microsoft Challenge-2016",Description="Описание конференции Microsoft Challenge-2016",StartDate=DateTime.Parse("2016-02-12")}
-            };
-
-            confs.ForEach(c => context.Conferences.Add(c));
-            context.SaveChanges();
-
             // Users
-            var user = new User { 
+            var user = new User
+            {
                 Id = Guid.NewGuid().ToString(),
                 Login = "user",
                 Password = "user",
@@ -44,7 +36,8 @@ namespace Client.DAL
                 Role = "user"
             };
 
-            var organizer = new User {
+            var organizer = new User
+            {
                 Id = Guid.NewGuid().ToString(),
                 Login = "organizer",
                 Password = "organizer",
@@ -69,6 +62,17 @@ namespace Client.DAL
             context.Users.Add(organizer);
             context.Users.Add(admin);
             context.SaveChanges();
+
+            var confs = new List<ConferenceModel>
+            {
+                new ConferenceModel{Name="Умник-2015",Description="Описание конференции Умник-2015",StartDate=DateTime.Parse("2015-12-15"), Organisators=new List<User>{admin,organizer}},
+                new ConferenceModel{Name="Microsoft Challenge-2016",Description="Описание конференции Microsoft Challenge-2016",StartDate=DateTime.Parse("2016-02-12"),Organisators=new List<User>{admin,organizer}}
+            };
+
+            confs.ForEach(c => context.Conferences.Add(c));
+            context.SaveChanges();
+
+            
 
             var pconf = context.Conferences.FirstOrDefault();
             var puser = context.Users.FirstOrDefault();

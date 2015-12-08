@@ -33,6 +33,13 @@
         <dd>
             @Html.DisplayFor(model => model.StartDate)
         </dd>
+        <dt>
+            Organisators
+        </dt>
+        <dd>
+            @String.Join(", ", Model.Organisators.Select(x => x.Login))            
+        </dd>
+
 
     </dl>
 </div>

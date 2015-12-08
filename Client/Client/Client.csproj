@@ -148,17 +148,17 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Account\Registration.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Conference\Create.cshtml" />
-    <Content Include="Views\Conference\Delete.cshtml" />
-    <Content Include="Views\Conference\Details.cshtml" />
-    <Content Include="Views\Conference\Edit.cshtml" />
-    <Content Include="Views\Conference\Index.cshtml" />
     <Content Include="Views\News\Create.cshtml" />
     <Content Include="Views\News\Delete.cshtml" />
     <Content Include="Views\News\Details.cshtml" />
     <Content Include="Views\News\Edit.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\Account\_AccountPanel.cshtml" />
+    <Content Include="Views\Conference\Create.cshtml" />
+    <Content Include="Views\Conference\Delete.cshtml" />
+    <Content Include="Views\Conference\Details.cshtml" />
+    <Content Include="Views\Conference\Edit.cshtml" />
+    <Content Include="Views\Conference\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

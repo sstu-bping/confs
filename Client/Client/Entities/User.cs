@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity.Spatial;
 using System.ComponentModel.DataAnnotations.Schema;
+using Client.Models;
 
 
 namespace Client.Entities
@@ -30,6 +31,8 @@ namespace Client.Entities
         public string Position { get; set; }
 
         public string Role { get; set; }
+
+        public virtual List<ConferenceModel> Conferences { get; set; }
 
     }
 }

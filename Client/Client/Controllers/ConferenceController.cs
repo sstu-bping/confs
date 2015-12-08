@@ -51,7 +51,13 @@ namespace Client.Controllers
         {
             if (ModelState.IsValid)
             {
-                //conferencemodel.
+
+                var currentUser = db.Users.FirstOrDefault(x => x.Login == User.Identity.Name);
+                if (currentUser != null)
+                {
+                    conferencemodel.Organisators = new List<Entities.User>();
+                    conferencemodel.Organisators.Add(currentUser);
+                }
                 db.Conferences.Add(conferencemodel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
